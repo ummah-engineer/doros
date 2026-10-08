@@ -13,6 +13,10 @@ modules:
 
   - type: script
     scripts:
+      - enable-sshd-for-testing.sh
+
+  - type: script
+    scripts:
       - install-starship.sh
 
   - type: dnf
