@@ -11,6 +11,10 @@ modules:
       - source: system
         destination: /
 
+  - type: script
+    scripts:
+      - install-starship.sh
+
   - type: dnf
     install:
       packages:
@@ -18,7 +22,6 @@ modules:
         - htop
         - btop
         - neovim
-        - starship
 
   - type: default-flatpaks
     configurations:
