@@ -2,10 +2,17 @@
 set -oue pipefail
 
 # Enable sshd for bcvk ephemeral testing.
-# secureblue disables sshd by default. This script re-enables it
-# at image build time so the symlinks exist in the built image.
+#
+# secureblue MASKS sshd (symlinks it to /dev/null), not just
+# disables it. systemctl enable alone fails on a masked unit.
+# You must unmask first, then enable.
 
-echo "DorOS: Enabling sshd for bcvk testing..."
+echo "DorOS: Unmasking sshd..."
+systemctl unmask sshd.service
+systemctl unmask sshd.socket 2>/dev/null || true
+
+echo "DorOS: Enabling sshd..."
 systemctl enable sshd.service
 systemctl enable sshd.socket 2>/dev/null || true
-echo "DorOS: sshd enabled."
+
+echo "DorOS: sshd enabled for testing."
