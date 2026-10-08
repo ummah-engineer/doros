@@ -1,13 +1,10 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-# Image will be published to ghcr.io/<user>/<name>
 name: doros
 description: A hardened Fedora Atomic KDE image for users with security and AI research in mind
 
-# Base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/secureblue/kinoite-nvidia-open-hardened
 image-version: latest
 
-# Module configuration, executed in order
 modules:
   - type: files
     files:
@@ -15,20 +12,13 @@ modules:
         destination: /
 
   - type: dnf
-    repos:
-      copr:
-        - atim/starship
     install:
       packages:
         - micro
-        - starship
         - htop
         - btop
         - neovim
-    remove:
-      packages:
-        - firefox
-        - firefox-langpacks
+        - starship
 
   - type: default-flatpaks
     configurations:
