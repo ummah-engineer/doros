@@ -1,0 +1,5 @@
+# DorOS: Override secureblue's sshd disable for bcvk testing.
+# The "00-" prefix makes this file read after secureblue's
+# "35-secureblue-desktop.preset" and thus take precedence.
+enable sshd.service
+enable sshd.socket

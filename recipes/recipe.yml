@@ -48,6 +48,3 @@ modules:
       - htop
       - btop
       - neovim
-  - type: script
-    scripts:
-      - enable-sshd-for-testing.sh
